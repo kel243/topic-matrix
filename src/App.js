@@ -8,8 +8,23 @@ function App() {
   const [query, setQuery] = useState("");
   const [images, setImages] = useState([]);
   const [videos, setVideos] = useState([]);
+  const [favorites, setFavorites] = useState([]);
 
-  console.log(videos);
+  let matrix;
+
+  // Only render matrix if there are results for videos and images
+  if (images.length > 0 && videos.length > 0) {
+    matrix = (
+      <Matrix
+        images={images}
+        videos={videos}
+        favorites={favorites}
+        setFavorites={setFavorites}
+      />
+    );
+  } else {
+    matrix = "";
+  }
 
   return (
     <AppStyle>
@@ -19,7 +34,7 @@ function App() {
         setImages={setImages}
         setVideos={setVideos}
       />
-      <Matrix images={images} videos={videos} />
+      {matrix}
     </AppStyle>
   );
 }
