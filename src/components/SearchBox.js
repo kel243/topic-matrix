@@ -16,6 +16,7 @@ const SearchBox = ({ query, setQuery, setImages, setVideos }) => {
     client.videos.search({ query, per_page: 2 }).then((videos) => {
       setVideos(videos.videos);
     });
+    setQuery("");
   };
 
   return (
