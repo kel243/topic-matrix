@@ -19,7 +19,6 @@ const MatrixImage = ({ image, video, query, favorites, setFavorites }) => {
   // Remove image/video from favorites state if it is unfavorited
   const clickHandler = (mode) => {
     setFavorited(!favorited);
-    console.log("ran");
     if (mode === "photo") {
       if (favorited) {
         setFavorites([...favorites, image.url]);
