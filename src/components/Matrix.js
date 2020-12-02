@@ -3,14 +3,29 @@ import styled from "styled-components";
 import MatrixImage from "./MatrixImage";
 import MatrixVideo from "./MatrixVideo";
 
-const Matrix = ({ images, videos }) => {
+const Matrix = ({ images, videos, favorites, setFavorites }) => {
   return (
     <MatrixStyle>
-      <MatrixVideo video={videos[0]} key={videos[0].id}></MatrixVideo>
+      <MatrixVideo
+        favorites={favorites}
+        setFavorites={setFavorites}
+        video={videos[0]}
+        key={videos[0].id}
+      ></MatrixVideo>
       {images.map((image) => (
-        <MatrixImage image={image} key={image.id}></MatrixImage>
+        <MatrixImage
+          favorites={favorites}
+          setFavorites={setFavorites}
+          image={image}
+          key={image.id}
+        ></MatrixImage>
       ))}
-      <MatrixVideo video={videos[1]} key={videos[1].id}></MatrixVideo>
+      <MatrixVideo
+        favorites={favorites}
+        setFavorites={setFavorites}
+        video={videos[1]}
+        key={videos[1].id}
+      ></MatrixVideo>
     </MatrixStyle>
   );
 };
@@ -23,6 +38,7 @@ const MatrixStyle = styled.div`
   height: 80%;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
+  overflow: hidden;
 `;
 
 export default Matrix;
