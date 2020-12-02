@@ -1,11 +1,19 @@
 import React from "react";
 import styled from "styled-components";
+import MatrixImage from "./MatrixImage";
 
-const MatrixVideo = ({ video }) => {
+const MatrixVideo = ({ video, query, favorites, setFavorites }) => {
   return (
     <MatrixVideoBox>
-      <MatrixImg src={video.image}></MatrixImg>
-      <VideoLink href={video.url}>Watch</VideoLink>
+      <MatrixImage
+        video={video}
+        alt={query}
+        favorites={favorites}
+        setFavorites={setFavorites}
+      ></MatrixImage>
+      <VideoLink target="_blank" href={video.url}>
+        <span>Watch</span>
+      </VideoLink>
     </MatrixVideoBox>
   );
 };
@@ -16,24 +24,26 @@ const MatrixVideoBox = styled.div`
   position: relative;
 `;
 
-const MatrixImg = styled.img`
-  width: 100%;
-  height: 100%;
-  cursor: pointer;
-`;
-
 const VideoLink = styled.a`
-  text-decoration: none;
-  width: 100%;
-  background: #32e0c4;
-  color: black;
-  font-size: 1.3rem;
-  text-align: center;
   position: absolute;
   left: 0;
   bottom: 0;
   height: 40px;
+  width: 100%;
+  text-decoration: none;
+  display: inline-block;
+  background: #32e0c4;
+  color: black;
+  font-size: 1.3rem;
+  text-align: center;
   transition: all 0.2s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  span {
+    background: none;
+  }
 
   :hover {
     background: #0d7377;
