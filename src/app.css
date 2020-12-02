@@ -10,3 +10,7 @@
 body {
   font-family: "Roboto", sans-serif;
 }
+
+.favorited {
+  border: 3px solid #32e0c4;
+}
